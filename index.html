@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b7285">
+<title>熊本プール空き情報</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#f3f7f8;--card:#fff;--text:#173042;--muted:#6b7c86;--accent:#0b7285;--green:#2f9e44;--yellow:#f08c00;--red:#e03131;--line:#e8eef0}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+header{background:linear-gradient(135deg,#0b7285,#1098ad);color:#fff;padding:22px 18px 18px;border-radius:0 0 24px 24px}
+h1{font-size:24px;margin:0 0 6px}.sub{opacity:.9;font-size:13px}
+.wrap{max-width:760px;margin:auto;padding:14px}
+.status{display:flex;gap:8px;overflow:auto;padding:3px 0 13px}.pill{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:13px}.pill.active{background:#0b7285;color:#fff;border-color:#0b7285}
+.toolbar{display:flex;gap:8px;margin-bottom:12px}.search{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-size:15px;background:#fff}
+.card{background:var(--card);border-radius:18px;padding:16px;margin:10px 0;box-shadow:0 3px 14px rgba(20,50,60,.06);border:1px solid var(--line)}
+.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:700;font-size:17px}.area{font-size:12px;color:var(--muted);margin-top:3px}
+.badge{font-size:12px;font-weight:700;border-radius:999px;padding:7px 10px;height:max-content}.green{background:#e6f4ea;color:#237a36}.yellow{background:#fff3df;color:#a65b00}.red{background:#ffe5e5;color:#b42323}.gray{background:#eef1f3;color:#586870}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}.info{background:#f7fafb;border-radius:12px;padding:10px}.label{font-size:11px;color:var(--muted)}.value{font-size:14px;font-weight:600;margin-top:3px}
+.notice{border-left:4px solid var(--yellow);background:#fff9ed;padding:10px 12px;border-radius:8px;font-size:13px;margin-top:10px}
+.source{font-size:11px;color:var(--muted);margin-top:11px}.source a{color:var(--accent);text-decoration:none}
+button{border:0;border-radius:11px;padding:11px 13px;background:#e9f5f7;color:#075c6b;font-weight:600}button.primary{background:#0b7285;color:#fff}
+footer{padding:18px 5px 30px;color:var(--muted);font-size:11px;line-height:1.6}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>🏊 熊本プール空き情報</h1>
+  <div class="sub">営業時間・コース利用状況をまとめて確認</div>
+</div></header>
+<main class="wrap">
+  <div class="status" id="filters">
+    <button class="pill active" data-filter="all">すべて</button>
+    <button class="pill" data-filter="open">今営業中</button>
+    <button class="pill" data-filter="free">空いている</button>
+    <button class="pill" data-filter="closed">休館</button>
+  </div>
+  <div class="toolbar">
+    <input class="search" id="q" placeholder="施設名・地域で検索">
+    <button class="primary" id="refresh">更新</button>
+  </div>
+  <div id="updated" class="sub" style="color:#6b7c86;margin:0 0 8px"></div>
+  <div id="list"></div>
+  <footer>
+    ※「空いている」はリアルタイム入場者数ではなく、現時点で確認できる営業・貸切等の情報をもとにした第1版の判定です。<br>
+    ※コース貸切・教室・大会等の予定は施設側の告知が更新される場合があります。来館前に公式情報をご確認ください。<br>
+    ※この第1版は画面・検索・営業判定・コース情報を実装しています。次版で公式サイトからの自動取得を接続できます。
+  </footer>
+</main>
+<script>
+const pools=[
+ {id:"sougou",name:"熊本県立総合体育館",area:"熊本市西区",hours:"10:00〜21:00",closed:[2],courses:8,
+  schedule:[{from:"2026-08-09T17:00",to:"2026-08-09T19:00",text:"2コース専用利用（デモ表示）"}],
+  source:"https://www.kspa.or.jp/sougou_taiku_charge/",sourceName:"熊本県スポーツ振興事業団"},
+ {id:"aquadome",name:"熊本市総合屋内プール（アクアドームくまもと）",area:"熊本市南区",hours:"10:00〜21:00",closed:[3],courses:10,
+  schedule:[{from:"2026-08-09T14:00",to:"2026-08-09T16:00",text:"3コース専用利用（デモ表示）"}],
+  source:"https://kc-sks.jp/aquadome/",sourceName:"熊本市スポーツ情報＆施設ガイド"},
+ {id:"nanbu",name:"南部総合スポーツセンター",area:"熊本市南区",hours:"7〜9月 10:00〜21:00",closed:[1],courses:5,
+  schedule:[{from:"2026-08-09T18:00",to:"2026-08-09T19:00",text:"1コース利用制限（デモ表示）"}],
+  source:"https://kc-sks.jp/nanbu/",sourceName:"熊本市スポーツ情報＆施設ガイド"},
+ {id:"park",name:"パークドーム熊本",area:"熊本市東区",hours:"施設公式情報を確認",closed:[],courses:null,
+  schedule:[],source:"https://www.kspa.or.jp/parkdome/",sourceName:"熊本県スポーツ振興事業団"}
+];
+
+let filter="all";
+function parseTime(s){const [h,m]=s.split(":").map(Number);return h*60+m}
+function currentStatus(p){
+ const d=new Date(), day=d.getDay(), mins=d.getHours()*60+d.getMinutes();
+ if(p.closed.includes(day)) return {state:"closed",label:"休館",cls:"red",available:null};
+ let open=false,close=false;
+ const match=p.hours.match(/(\d{1,2}):(\d{2}).*?(\d{1,2}):(\d{2})/);
+ if(match){const a=+match[1]*60+ +match[2], b=+match[3]*60+ +match[4];open=mins>=a&&mins<b;close=true}
+ let unavailable=0, notice=[];
+ p.schedule.forEach(x=>{const a=new Date(x.from),b=new Date(x.to);if(d>=a&&d<=b){const n=(x.text.match(/(\d+)コース/)||[])[1];unavailable+=n?+n:1;notice.push(x.text)}});
+ const available=p.courses==null?null:Math.max(0,p.courses-unavailable);
+ let state="unknown",label="情報確認",cls="gray";
+ if(close){state=open?"open":"closed-hours";label=open?"営業中":"営業時間外";cls=open?"green":"gray"}
+ if(available!==null && open){const ratio=available/p.courses;if(ratio>=.75){label="空いている";cls="green"}else if(ratio>=.45){label="普通";cls="yellow"}else{label="混雑";cls="red"}}
+ return {state,label,cls,available,notice};
+}
+function render(){
+ const q=document.getElementById("q").value.trim().toLowerCase();
+ const list=document.getElementById("list"); list.innerHTML="";
+ let shown=0;
+ pools.forEach(p=>{
+  const s=currentStatus(p);
+  const hay=(p.name+p.area).toLowerCase();
+  const okQ=!q||hay.includes(q);
+  const okF=filter==="all"||(filter==="open"&&s.state==="open")||(filter==="free"&&s.label==="空いている")||(filter==="closed"&&s.state==="closed");
+  if(!okQ||!okF)return; shown++;
+  const availableText=p.courses==null?"公式情報を確認":`${s.available}/${p.courses} コース利用可能`;
+  const notice=s.notice.length?s.notice.map(x=>`<div class="notice">⚠️ ${x}</div>`).join(""):"";
+  const card=document.createElement("article");card.className="card";
+  card.innerHTML=`<div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><span class="badge ${s.cls}">${s.label}</span></div>
+   <div class="grid"><div class="info"><div class="label">営業時間</div><div class="value">${p.hours}</div></div>
+   <div class="info"><div class="label">コース</div><div class="value">${availableText}</div></div></div>
+   ${notice}<div class="source">情報元：<a href="${p.source}" target="_blank" rel="noopener">${p.sourceName}</a></div>`;
+  list.appendChild(card);
+ });
+ if(!shown)list.innerHTML='<div class="empty">該当するプールがありません。</div>';
+ document.getElementById("updated").textContent="画面更新："+new Date().toLocaleString("ja-JP");
+}
+document.querySelectorAll("#filters .pill").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#filters .pill").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.filter;render()}));
+document.getElementById("q").addEventListener("input",render);
+document.getElementById("refresh").addEventListener("click",render);
+render();
+</script>
+</body>
+</html>
