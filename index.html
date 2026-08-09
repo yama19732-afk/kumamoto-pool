@@ -1,55 +1,55 @@
-<!doctype html><html lang="ja"><head>
+<!doctype html>
+<html lang="ja"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b7285"><title>熊本プール空き情報</title>
-<link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{--bg:#f3f7f8;--card:#fff;--text:#173042;--muted:#6b7c86;--accent:#0b7285;--green:#2f9e44;--yellow:#f08c00;--red:#e03131;--line:#e8eef0}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
-header{background:linear-gradient(135deg,#0b7285,#1098ad);color:#fff;padding:22px 18px 18px;border-radius:0 0 24px 24px}
-h1{font-size:24px;margin:0 0 6px}.sub{opacity:.9;font-size:13px}.wrap{max-width:760px;margin:auto;padding:14px}
-.status{display:flex;gap:8px;overflow:auto;padding:3px 0 13px}.pill{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:13px}.pill.active{background:#0b7285;color:#fff;border-color:#0b7285}
-.toolbar{display:flex;gap:8px;margin-bottom:12px}.search{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-size:15px;background:#fff}
-.card{background:var(--card);border-radius:18px;padding:16px;margin:10px 0;box-shadow:0 3px 14px rgba(20,50,60,.06);border:1px solid var(--line)}
-.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:700;font-size:17px}.area{font-size:12px;color:var(--muted);margin-top:3px}
-.badge{font-size:12px;font-weight:700;border-radius:999px;padding:7px 10px;height:max-content}.green{background:#e6f4ea;color:#237a36}.red{background:#ffe5e5;color:#b42323}.gray{background:#eef1f3;color:#586870}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}.info{background:#f7fafb;border-radius:12px;padding:10px}.label{font-size:11px;color:var(--muted)}.value{font-size:14px;font-weight:600;margin-top:3px}
-.notice{border-left:4px solid var(--yellow);background:#fff9ed;padding:10px 12px;border-radius:8px;font-size:13px;margin-top:10px}
-.source{font-size:11px;color:var(--muted);margin-top:11px}.source a{color:var(--accent);text-decoration:none}
-button{border:0;border-radius:11px;padding:11px 13px;background:#e9f5f7;color:#075c6b;font-weight:600}button.primary{background:#0b7285;color:#fff}
-.legend{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px;font-size:12px;line-height:1.6}
-footer{padding:18px 5px 30px;color:var(--muted);font-size:11px;line-height:1.6}.empty{text-align:center;padding:30px;color:var(--muted)}
+:root{--bg:#f4f8f9;--card:#fff;--text:#153242;--muted:#71818a;--accent:#0b8294;--green:#268a46;--orange:#c86d00;--red:#c92a2a;--line:#e5edef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--text)}
+header{padding:26px 18px 21px;background:linear-gradient(135deg,#087f8c,#119daf);color:white;border-radius:0 0 25px 25px}h1{font-size:24px;margin:0 0 5px}.wrap{max-width:760px;margin:auto;padding:14px}
+.small{font-size:12px;color:var(--muted)}header .small{color:#e8fbfd}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.sum{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}.num{font-size:21px;font-weight:800}
+.filters{display:flex;gap:8px;overflow:auto;margin:10px 0}.filters button{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;color:var(--text)}.filters .on{background:var(--accent);color:white;border-color:var(--accent)}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0;box-shadow:0 3px 13px rgba(0,0,0,.04)}.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:800;font-size:17px}.area{color:var(--muted);font-size:12px;margin-top:3px}.badge{height:max-content;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700}.g{background:#e8f6eb;color:var(--green)}.r{background:#ffe9e9;color:var(--red)}.n{background:#eef2f4;color:#5d6970}.o{background:#fff1df;color:var(--orange)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.cell{background:#f6f9fa;border-radius:12px;padding:10px}.lab{font-size:11px;color:var(--muted)}.val{font-weight:700;font-size:14px;margin-top:3px}.alert{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7e9;border-left:4px solid #f59f00;font-size:13px}.safe{margin-top:10px;padding:10px 12px;border-radius:10px;background:#edf8ef;border-left:4px solid #40a657;font-size:13px}
+.links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;padding:8px 10px;border-radius:9px;background:#e8f5f7;color:#086474;font-weight:700}
+.notice{background:white;border:1px solid var(--line);padding:12px;border-radius:14px;font-size:12px;line-height:1.6;margin-top:12px}.loading{text-align:center;padding:28px;color:var(--muted)}
 </style></head><body>
-<header><div class="wrap"><h1>🏊 熊本プール空き情報</h1><div class="sub">営業時間・休館日・コース情報をまとめて確認</div></div></header>
+<header><div class="wrap"><h1>🏊 熊本プール空き情報</h1><div class="small">第3版：公式サイトの更新を毎日自動チェック</div></div></header>
 <main class="wrap">
-<div class="status" id="filters"><button class="pill active" data-filter="all">すべて</button><button class="pill" data-filter="open">今営業中</button><button class="pill" data-filter="season">今季営業</button><button class="pill" data-filter="closed">休館・期間外</button></div>
-<div class="toolbar"><input class="search" id="q" placeholder="施設名・地域で検索"><button class="primary" id="refresh">更新</button></div>
-<div id="updated" class="sub" style="color:#6b7c86;margin:0 0 8px"></div>
-<div class="legend"><b>第2版：</b>公式サイトで確認できる営業時間・休館日・プール規模を優先表示。リアルタイム人数や当日の貸切コース情報を公式が公開していない施設は、推測で「空いている」とは表示しません。</div>
-<div id="list"></div>
-<footer>情報は各施設の公式ページを基準にしています。臨時休館・大会・教室・貸切などは変更されることがあります。来館前に公式情報をご確認ください。<br>次の段階で「当日のコース利用制限」を自動取得できる情報源を調査・接続します。</footer>
+<div id="updated" class="small"></div>
+<div class="summary"><div class="sum"><div class="num" id="openN">-</div><div class="small">営業中</div></div><div class="sum"><div class="num" id="alertN">-</div><div class="small">要確認</div></div><div class="sum"><div class="num" id="allN">-</div><div class="small">登録施設</div></div></div>
+<div class="filters"><button class="on" data-f="all">すべて</button><button data-f="open">営業中</button><button data-f="alert">要確認</button></div>
+<div class="notice"><b>「空き」の考え方：</b>施設がリアルタイム人数や当日のコース貸切数を公開していない場合、空いているとは断定しません。公式の休館・重要なお知らせ・行事予定を自動確認し、泳ぐ前に確認すべき情報を表示します。</div>
+<div id="list" class="loading">データを読み込み中…</div>
 </main>
 <script>
-const pools=[
-{id:"sougou",name:"熊本県立総合体育館",area:"熊本市西区",hours:"10:00〜21:00",closed:[2],courses:"公式情報を確認",src:"https://www.kspa.or.jp/sougou_taiku_charge/",org:"熊本県スポーツ振興事業団",note:"室内温水プール。毎週火曜休館（祝日の場合を除く）。リアルタイム人数・コース空きは公式公開情報では確認できません。"},
-{id:"park",name:"パークドーム熊本",area:"熊本市東区",hours:"10:00〜21:00",closed:[2],courses:"25m×5コース",src:"https://www.kspa.or.jp/park_charge/",org:"熊本県スポーツ振興事業団",note:"室内温水プールは25m×5コース。毎週火曜休園（祝日の場合を除く）。"},
-{id:"aqua",name:"熊本市総合屋内プール（アクアドームくまもと）",area:"熊本市南区",hours:"公式ページを確認",closed:[],courses:"公式情報を確認",src:"https://kc-sks.jp/aquadome/",org:"熊本市スポーツ情報＆施設ガイド",note:"熊本市公式案内では個人利用は当日券。事前の空き状況は施設へ直接確認と案内されています。"},
-{id:"nanbu",name:"南部総合スポーツセンター",area:"熊本市南区",hours:"7〜9月 10:00〜21:00 / 10〜6月 12:00〜20:00",closed:[1],courses:"25m×5コース",src:"https://kc-sks.jp/nanbu/usreguide01.html",org:"熊本市スポーツ情報＆施設ガイド",note:"毎週月曜休館（祝日の場合は翌日）。個人利用は予約制ではありません。"},
-{id:"hamasen",name:"浜線健康パーク（田迎公園運動施設）",area:"熊本市南区",hours:"7〜9月 10:00〜21:00 / 10〜6月 12:00〜20:00",closed:[],courses:"公式情報を確認",src:"https://kc-sks.jp/hamasen/usreguide.html",org:"熊本市スポーツ情報＆施設ガイド",note:"室内温水プール。7〜9月は10:00〜21:00、10〜6月は12:00〜20:00。個人利用は当日券。"},
-{id:"bg",name:"熊本市城南B&G海洋センター",area:"熊本市南区城南町",hours:"5/1〜9/30 10:00〜21:00",closed:[],courses:"25m×6コース",src:"https://kc-sks.jp/jyonan-bg/usreguide.html",org:"熊本市スポーツ情報＆施設ガイド",note:"季節営業。午前・午後・夜間の区分利用。"},
-{id:"gofuku",name:"熊本市立五福小学校プール（一般開放）",area:"熊本市中央区",hours:"平日18:00〜21:00 / 土日祝10:00〜21:00",closed:[1],courses:"25m×5コース",src:"https://www.city.kumamoto.jp/chuo/kiji0031001/index.html",org:"熊本市公式サイト",note:"2026年の一般開放は7/18〜8/20。月曜休止（祝日の場合は翌日）。"}
-];
-function status(p){
- const d=new Date(),day=d.getDay(),m=d.getMonth()+1;
- if(p.id==="gofuku"){const y=d.getFullYear(),a=new Date(y,6,18),b=new Date(y,7,20,23,59);if(d<a||d>b)return ["closed","期間外","red"];if(p.closed.includes(day))return ["closed","休止日","red"];const open=day>=2&&day<=5?(d.getHours()>=18&&d.getHours()<21):(d.getHours()>=10&&d.getHours()<21);return [open?"open":"closed-hours",open?"営業中":"営業時間外",open?"green":"gray"];}
-if(p.id==="bg"&&(m<5||m>9))return ["closed","季節営業外","red"];if(p.closed.includes(day))return ["closed","休館","red"];
-if(p.id==="aqua")return ["unknown","公式情報を確認","gray"];
-let a=10,b=21;if((p.id==="nanbu"||p.id==="hamasen")&&(m<7||m>9)){a=12;b=20;}
-const mins=d.getHours()*60+d.getMinutes(),open=mins>=a*60&&mins<b*60;return [open?"open":"closed-hours",open?"営業中":"営業時間外",open?"green":"gray"];
+let DATA=[], filter="all";
+function isOpen(p){
+ const d=new Date(), day=d.getDay(), m=d.getMonth()+1, mins=d.getHours()*60+d.getMinutes();
+ if(p.season && (m<p.season[0]||m>p.season[1])) return false;
+ if((p.closed_days||[]).includes(day)) return false;
+ let h=p.hours_default;
+ if(p.hours_summer && m>=7&&m<=9) h=p.hours_summer;
+ if(!h) return null;
+ return mins>=h[0]*60+h[1] && mins<h[2]*60+h[3];
 }
-let filter="all";
-function render(){const q=document.getElementById("q").value.toLowerCase(),list=document.getElementById("list");list.innerHTML="";let n=0;
-pools.forEach(p=>{const s=status(p),okq=!q||(p.name+p.area).toLowerCase().includes(q),okf=filter==="all"||(filter==="open"&&s[0]==="open")||(filter==="season"&&s[0]!=="closed")||(filter==="closed"&&s[0]==="closed");if(!okq||!okf)return;n++;
-const c=document.createElement("article");c.className="card";c.innerHTML=`<div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><span class="badge ${s[2]}">${s[1]}</span></div><div class="grid"><div class="info"><div class="label">営業時間</div><div class="value">${p.hours}</div></div><div class="info"><div class="label">プール規模</div><div class="value">${p.courses}</div></div></div><div class="notice">ℹ️ ${p.note}</div><div class="source">公式情報：<a href="${p.src}" target="_blank" rel="noopener">${p.org}</a></div>`;list.appendChild(c);});
-if(!n)list.innerHTML='<div class="empty">該当するプールがありません。</div>';document.getElementById("updated").textContent="画面更新："+new Date().toLocaleString("ja-JP");}
-document.querySelectorAll("#filters .pill").forEach(b=>b.onclick=()=>{document.querySelectorAll("#filters .pill").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.filter;render()});document.getElementById("q").oninput=render;document.getElementById("refresh").onclick=render;render();
+function render(){
+ const el=document.getElementById("list"); el.innerHTML="";
+ let openCount=0, alertCount=0;
+ DATA.forEach(p=>{const op=isOpen(p);if(op)openCount++;if(p.alert)alertCount++;});
+ document.getElementById("openN").textContent=openCount;document.getElementById("alertN").textContent=alertCount;document.getElementById("allN").textContent=DATA.length;
+ DATA.forEach(p=>{
+  const op=isOpen(p); if(filter==="open"&&!op)return;if(filter==="alert"&&!p.alert)return;
+  let label=op===true?"営業中":op===false?"営業時間外":"時間確認"; let cls=op===true?"g":"n";
+  if(p.alert){label="要確認";cls="o";}
+  const c=document.createElement("article");c.className="card";
+  c.innerHTML=`<div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><span class="badge ${cls}">${label}</span></div>
+  <div class="grid"><div class="cell"><div class="lab">営業時間</div><div class="val">${p.hours_text}</div></div><div class="cell"><div class="lab">コース</div><div class="val">${p.courses||"公式確認"}</div></div></div>
+  ${p.alert?`<div class="alert">⚠️ ${p.alert}</div>`:`<div class="safe">✓ 現在取得した公式更新に、警告対象の文言はありません。</div>`}
+  <div class="links"><a href="${p.official}" target="_blank">公式サイト</a>${p.calendar?`<a href="${p.calendar}" target="_blank">行事予定・カレンダー</a>`:""}</div>`;
+  el.appendChild(c);
+ });
+ if(!el.children.length) el.innerHTML='<div class="loading">該当施設なし</div>';
+}
+fetch("./data.json?"+Date.now()).then(r=>r.json()).then(d=>{DATA=d.pools;document.getElementById("updated").textContent="公式情報チェック："+d.updated_at+"（自動更新）";render()}).catch(()=>{document.getElementById("list").innerHTML="data.jsonを読み込めませんでした。";});
+document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filters button").forEach(x=>x.classList.remove("on"));b.classList.add("on");filter=b.dataset.f;render()});
 </script></body></html>

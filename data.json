@@ -1,0 +1,131 @@
+{
+  "updated_at": "初期データ",
+  "pools": [
+    {
+      "id": "sougou",
+      "name": "熊本県立総合体育館",
+      "area": "熊本市西区",
+      "hours_text": "10:00〜21:00",
+      "hours_default": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [
+        2
+      ],
+      "courses": "公式確認",
+      "official": "https://www.kspa.or.jp/sougou_taiku/",
+      "calendar": "https://www.kspa.or.jp/sougou_taiku_yotei/",
+      "alert": null
+    },
+    {
+      "id": "park",
+      "name": "パークドーム熊本",
+      "area": "熊本市東区",
+      "hours_text": "10:00〜21:00",
+      "hours_default": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [
+        2
+      ],
+      "courses": "25m×5",
+      "official": "https://www.kspa.or.jp/park/",
+      "calendar": "https://www.kspa.or.jp/park_yotei/",
+      "alert": null
+    },
+    {
+      "id": "aqua",
+      "name": "アクアドームくまもと",
+      "area": "熊本市南区",
+      "hours_text": "プール 10:00〜21:00",
+      "hours_default": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [
+        3
+      ],
+      "courses": "公式確認",
+      "official": "https://kc-sks.jp/aqua/",
+      "calendar": "https://kc-sks.jp/aqua/calendar.html",
+      "alert": null
+    },
+    {
+      "id": "nanbu",
+      "name": "南部総合スポーツセンター",
+      "area": "熊本市南区",
+      "hours_text": "7〜9月 10:00〜21:00 / 10〜6月 12:00〜20:00",
+      "hours_default": [
+        12,
+        0,
+        20,
+        0
+      ],
+      "hours_summer": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [
+        1
+      ],
+      "courses": "25m×5",
+      "official": "https://kc-sks.jp/nanbu/",
+      "calendar": "https://kc-sks.jp/nanbu/calendar.html",
+      "alert": null
+    },
+    {
+      "id": "hamasen",
+      "name": "浜線健康パーク",
+      "area": "熊本市南区",
+      "hours_text": "7〜9月 10:00〜21:00 / 10〜6月 12:00〜20:00",
+      "hours_default": [
+        12,
+        0,
+        20,
+        0
+      ],
+      "hours_summer": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [],
+      "courses": "公式確認",
+      "official": "https://kc-sks.jp/hamasen/",
+      "calendar": "https://kc-sks.jp/hamasen/calendar.html",
+      "alert": null
+    },
+    {
+      "id": "bg",
+      "name": "城南B&G海洋センター",
+      "area": "熊本市南区城南町",
+      "hours_text": "5〜9月 10:00〜21:00",
+      "hours_default": [
+        10,
+        0,
+        21,
+        0
+      ],
+      "closed_days": [],
+      "season": [
+        5,
+        9
+      ],
+      "courses": "25m×6",
+      "official": "https://kc-sks.jp/jyonan-bg/",
+      "calendar": "https://kc-sks.jp/jyonan-bg/calendar.html",
+      "alert": null
+    }
+  ]
+}
