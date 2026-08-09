@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026/08/09 20:41",
+  "updated_at": "2026/08/09 20:47",
   "pools": [
     {
       "id": "sougou",
@@ -66,8 +66,8 @@
         "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
         "lane_notice_checked_at": "2026/08/09 20:31",
         "status_url": "https://kc-sks.jp/aqua/newsdata.html?id=id60e79a8642ea9",
-        "status_checked_at": "2026/08/09 20:41",
-        "status_text": "公式「プール・トレーニングの状況」を確認してください。"
+        "status_checked_at": "2026/08/09 20:47",
+        "status_text": "10:30頃更新の公式レーン貸し情報を確認してください。"
       },
       "sub_pool": {
         "name": "サブプール",
@@ -78,12 +78,13 @@
         "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
         "lane_notice_checked_at": "2026/08/09 20:31",
         "status_url": "https://kc-sks.jp/aqua/newsdata.html?id=id60e79a8642ea9",
-        "status_checked_at": "2026/08/09 20:41",
-        "status_text": "公式「プール・トレーニングの状況」を確認してください。"
+        "status_checked_at": "2026/08/09 20:47",
+        "status_text": "10:30頃更新の公式レーン貸し情報を確認してください。"
       },
-      "aqua_important_title": null,
-      "aqua_important_url": null,
-      "aqua_today_events": []
+      "aqua_important_title": "令和8年熊本地震に伴う臨時休館施設の一部利用再開について",
+      "aqua_important_url": "https://kc-sks.jp/news/newsdata.html?id=id6a70822576a30",
+      "aqua_today_events": [],
+      "aqua_important_note": "2026/8/3付の熊本市文化スポーツ財団公式情報。アクアドームが対象施設に含まれるため、利用可能範囲を公式ページで確認してください。"
     },
     {
       "id": "nanbu",
