@@ -5,40 +5,22 @@
 <style>
 :root{--bg:#f4f8f9;--card:#fff;--text:#153242;--muted:#71818a;--accent:#0b8294;--green:#268a46;--orange:#c86d00;--red:#c92a2a;--line:#e5edef}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--text)}
-header{padding:26px 18px 21px;background:linear-gradient(135deg,#087f8c,#119daf);color:#fff;border-radius:0 0 25px 25px}
-.wrap{max-width:760px;margin:auto;padding:14px}h1{font-size:24px;margin:0 0 5px}.small{font-size:12px;color:var(--muted)}header .small{color:#e8fbfd}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0;box-shadow:0 3px 13px rgba(0,0,0,.04)}
-.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:800;font-size:17px}.area{color:var(--muted);font-size:12px;margin-top:3px}
-.badge{height:max-content;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700}.g{background:#e8f6eb;color:var(--green)}.n{background:#eef2f4;color:#5d6970}.o{background:#fff1df;color:var(--orange)}.r{background:#ffe8e8;color:var(--red)}
+header{padding:26px 18px 21px;background:linear-gradient(135deg,#087f8c,#119daf);color:#fff;border-radius:0 0 25px 25px}.wrap{max-width:760px;margin:auto;padding:14px}h1{font-size:24px;margin:0 0 5px}.small{font-size:12px;color:var(--muted)}header .small{color:#e8fbfd}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0;box-shadow:0 3px 13px rgba(0,0,0,.04)}.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:800;font-size:17px}.area{color:var(--muted);font-size:12px;margin-top:3px}.badge{height:max-content;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700}.g{background:#e8f6eb;color:var(--green)}.n{background:#eef2f4;color:#5d6970}.o{background:#fff1df;color:var(--orange)}.r{background:#ffe8e8;color:var(--red)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.cell{background:#f6f9fa;border-radius:12px;padding:10px}.lab{font-size:11px;color:var(--muted)}.val{font-weight:700;font-size:14px;margin-top:3px}
-.section{margin-top:12px;border:1px solid #dcebee;border-radius:14px;padding:12px;background:#fbfeff}.section-title{font-weight:800}.meta{font-size:12px;color:var(--muted);margin-top:2px}
-.notice{margin-top:8px;padding:10px;border-radius:10px;background:#eef8fa;font-size:13px;line-height:1.55}.warn{background:#fff7e9;border-left:4px solid #f59f00}.danger{background:#fff0f0;border-left:4px solid #e03131}
-.links{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;padding:8px 10px;border-radius:9px;background:#e8f5f7;color:#086474;font-weight:700}
-.intro{background:#fff;border:1px solid var(--line);padding:12px;border-radius:14px;font-size:12px;line-height:1.65;margin:12px 0}.loading{text-align:center;padding:28px;color:var(--muted)}
+.section{margin-top:12px;border:1px solid #dcebee;border-radius:14px;padding:12px;background:#fbfeff}.section-title{font-weight:800}.meta{font-size:12px;color:var(--muted);margin-top:2px}.notice{margin-top:8px;padding:10px;border-radius:10px;background:#eef8fa;font-size:13px;line-height:1.55}.warn{background:#fff7e9;border-left:4px solid #f59f00}.danger{background:#fff0f0;border-left:4px solid #e03131}
+.links{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;padding:8px 10px;border-radius:9px;background:#e8f5f7;color:#086474;font-weight:700}.intro{background:#fff;border:1px solid var(--line);padding:12px;border-radius:14px;font-size:12px;line-height:1.65;margin:12px 0}.loading{text-align:center;padding:28px;color:var(--muted)}
 </style></head><body>
-<header><div class="wrap"><h1>🏊 熊本プール空き情報</h1><div class="small">第5版：アクアドーム「重要なお知らせ・本日の行事・メイン/サブレーン貸し」を分離取得</div></div></header>
-<main class="wrap"><div id="updated" class="small"></div>
-<div class="intro"><b>第5版：</b>第3版の臨時休館検出を維持しつつ、アクアドームだけ公式ニュース一覧・行事カレンダー・メインプール・サブプールを個別に確認します。情報が曖昧な場合は推測しません。</div>
-<div id="list" class="loading">データを読み込み中…</div></main>
+<header><div class="wrap"><h1>🏊 熊本プール空き情報</h1><div class="small">第6版：アクアドームの公式「プール・トレーニングの状況」を直接取得</div></div></header>
+<main class="wrap"><div id="updated" class="small"></div><div class="intro"><b>第6版：</b>アクアドームはトップページ経由の推測をやめ、公式の「プール・トレーニングの状況」ページ、全体の重要なお知らせ、行事カレンダーを直接確認します。</div><div id="list" class="loading">データを読み込み中…</div></main>
 <script>
 function isOpen(p){const d=new Date(),day=d.getDay(),m=d.getMonth()+1,mins=d.getHours()*60+d.getMinutes();if(p.season&&(m<p.season[0]||m>p.season[1]))return false;if((p.closed_days||[]).includes(day))return false;let h=p.hours_default;if(p.hours_summer&&m>=7&&m<=9)h=p.hours_summer;if(!h)return null;return mins>=h[0]*60+h[1]&&mins<h[2]*60+h[3];}
 function link(url,label){return url?`<a href="${url}" target="_blank" rel="noopener">${label}</a>`:""}
-function poolBox(obj){if(!obj)return "";const has=obj.lane_notice_title;return `<div class="section"><div class="section-title">${obj.name}</div><div class="meta">${obj.length}・全${obj.total_lanes}レーン・${obj.season_text}</div><div class="notice ${has?'warn':''}">${has?`⚠️ ${obj.lane_notice_title}`:"公式の最新レーン貸し情報：該当告知なし／確認中"}</div>${obj.lane_notice_checked_at?`<div class="small" style="margin-top:6px">確認：${obj.lane_notice_checked_at}</div>`:""}<div class="links">${link(obj.lane_notice_url,"公式レーン貸し情報")}</div></div>`}
-function aquaExtras(p){
- let out="";
- if(p.aqua_important_title){out+=`<div class="section"><div class="section-title">⚠️ 重要なお知らせ</div><div class="notice danger">${p.aqua_important_title}</div><div class="links">${link(p.aqua_important_url,"重要なお知らせを開く")}</div></div>`}
- if(p.aqua_today_events && p.aqua_today_events.length){out+=`<div class="section"><div class="section-title">📅 本日の行事</div>${p.aqua_today_events.map(x=>`<div class="notice ${/中止|休館|利用不可/.test(x.title)?'warn':''}">${x.title}</div>`).join("")}<div class="links">${link(p.calendar,"行事カレンダー")}</div></div>`}
- out+=poolBox(p.main_pool)+poolBox(p.sub_pool);return out;
-}
-fetch("./data.json?"+Date.now()).then(r=>r.json()).then(d=>{
- updated.textContent="公式情報チェック："+d.updated_at+"（自動更新）";list.className="";list.innerHTML="";
- d.pools.forEach(p=>{const op=isOpen(p);const severe=p.alert||p.aqua_important_title;const lab=severe?"要確認":op===true?"営業中":op===false?"営業時間外":"時間確認";const cls=severe?"o":op===true?"g":"n";
- const c=document.createElement("article");c.className="card";
- c.innerHTML=`<div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><span class="badge ${cls}">${lab}</span></div>
- <div class="grid"><div class="cell"><div class="lab">営業時間</div><div class="val">${p.hours_text}</div></div><div class="cell"><div class="lab">コース</div><div class="val">${p.courses||"公式確認"}</div></div></div>
- ${p.id==="aqua"?aquaExtras(p):""}
- ${p.alert?`<div class="notice warn">⚠️ ${p.alert}</div>`:""}
- <div class="links">${link(p.official,"公式サイト")}${link(p.calendar,"行事予定")}</div>`;
- list.appendChild(c);});
-}).catch(e=>{list.innerHTML="data.jsonを読み込めませんでした。";});
+function poolBox(obj){if(!obj)return "";return `<div class="section"><div class="section-title">${obj.name}</div><div class="meta">${obj.length}・全${obj.total_lanes}レーン・${obj.season_text}</div><div class="notice ${obj.status_text?'warn':''}">${obj.status_text||"公式状況を確認中"}</div>${obj.status_checked_at?`<div class="small" style="margin-top:6px">確認：${obj.status_checked_at}</div>`:""}<div class="links">${link(obj.status_url,"公式「プール・トレーニングの状況」")}${link(obj.lane_notice_url,"レーン貸し告知")}</div></div>`}
+function aquaExtras(p){let out="";
+if(p.aqua_important_title)out+=`<div class="section"><div class="section-title">⚠️ 重要なお知らせ</div><div class="notice danger">${p.aqua_important_title}</div><div class="links">${link(p.aqua_important_url,"重要なお知らせを開く")}</div></div>`;
+if(p.aqua_today_events&&p.aqua_today_events.length)out+=`<div class="section"><div class="section-title">📅 本日の行事</div>${p.aqua_today_events.map(x=>`<div class="notice ${/中止|休館|利用不可/.test(x.title)?'warn':''}">${x.title}</div>`).join("")}<div class="links">${link(p.calendar,"行事カレンダー")}</div></div>`;
+return out+poolBox(p.main_pool)+poolBox(p.sub_pool)}
+fetch("./data.json?"+Date.now()).then(r=>r.json()).then(d=>{updated.textContent="公式情報チェック："+d.updated_at+"（自動更新）";list.className="";list.innerHTML="";
+d.pools.forEach(p=>{const op=isOpen(p),severe=p.alert||p.aqua_important_title,lab=severe?"要確認":op===true?"営業中":op===false?"営業時間外":"時間確認",cls=severe?"o":op===true?"g":"n";const c=document.createElement("article");c.className="card";c.innerHTML=`<div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><span class="badge ${cls}">${lab}</span></div><div class="grid"><div class="cell"><div class="lab">営業時間</div><div class="val">${p.hours_text}</div></div><div class="cell"><div class="lab">コース</div><div class="val">${p.courses||"公式確認"}</div></div></div>${p.id==="aqua"?aquaExtras(p):""}${p.alert?`<div class="notice warn">⚠️ ${p.alert}</div>`:""}<div class="links">${link(p.official,"公式サイト")}${link(p.calendar,"行事予定")}</div>`;list.appendChild(c);})}).catch(()=>{list.innerHTML="data.jsonを読み込めませんでした。"});
 </script></body></html>
