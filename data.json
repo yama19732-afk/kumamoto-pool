@@ -1,5 +1,5 @@
 {
-  "updated_at": "初期データ（第4版）",
+  "updated_at": "2026/08/09 20:22",
   "pools": [
     {
       "id": "sougou",
@@ -18,7 +18,7 @@
       "courses": "公式確認",
       "official": "https://www.kspa.or.jp/sougou_taiku/",
       "calendar": "https://www.kspa.or.jp/sougou_taiku_yotei/",
-      "alert": null
+      "alert": "予定 よくある質問 新着情報・お知らせ 一覧はこちら 2026.8.9 重要なお知らせ 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 2026.8.9 重要なお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ KSPA・MIZUNOスポ / .8.9 重要なお知らせ 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 2026.8.9 重要なお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ 2026.8.6 バ"
     },
     {
       "id": "park",
@@ -37,7 +37,7 @@
       "courses": "25m×5",
       "official": "https://www.kspa.or.jp/park/",
       "calendar": "https://www.kspa.or.jp/park_yotei/",
-      "alert": null
+      "alert": "予定 よくある質問 新着情報・お知らせ 一覧はこちら 2026.8.9 重要なお知らせ 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 2026.8.9 重要なお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ KSPA・MIZUNOスポ / .8.9 重要なお知らせ 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 施設再開及び利用休止継続のお知らせ（8/5 17：00現在） 2026.8.9 重要なお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ KSPA・MIZUNOスポーツプログラム再開及び休止継続のお知らせ 2026.8.9 重"
     },
     {
       "id": "aqua",
@@ -63,8 +63,8 @@
         "total_lanes": 10,
         "season_text": "夏季",
         "lane_notice_title": null,
-        "lane_notice_url": null,
-        "lane_notice_checked_at": null
+        "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
+        "lane_notice_checked_at": "2026/08/09 20:22"
       },
       "sub_pool": {
         "name": "サブプール",
@@ -72,8 +72,8 @@
         "total_lanes": 7,
         "season_text": "通年",
         "lane_notice_title": null,
-        "lane_notice_url": null,
-        "lane_notice_checked_at": null
+        "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
+        "lane_notice_checked_at": "2026/08/09 20:22"
       }
     },
     {
