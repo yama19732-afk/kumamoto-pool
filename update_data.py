@@ -2,11 +2,12 @@ import json, re, datetime, urllib.request
 from pathlib import Path
 
 UA={"User-Agent":"Mozilla/5.0 (compatible; KumamotoPoolInfo/1.0)"}
-BASE=Path(__file__).resolve().parents[1]
+BASE=Path(__file__).resolve().parent
 data_path=BASE/"data.json"
 data=json.loads(data_path.read_text(encoding="utf-8"))
 
 KEYWORDS=["臨時休館","臨時閉鎖","利用休止","利用停止","プール休止","プール利用休止","重要なお知らせ","営業再開"]
+
 def fetch(url):
     req=urllib.request.Request(url,headers=UA)
     with urllib.request.urlopen(req,timeout=20) as r:
@@ -25,11 +26,9 @@ for p in data["pools"]:
             if i>=0:
                 snippet=text[max(0,i-45):i+95].strip()
                 hits.append(snippet)
-        # 「重要なお知らせ」だけの一般見出しはノイズになりやすいため、
-        # 休止/閉鎖/再開など具体語があるときだけ警告表示する。
         concrete=[h for h in hits if any(k in h for k in ["臨時休館","臨時閉鎖","利用休止","利用停止","プール休止","営業再開"])]
         p["alert"]=" / ".join(dict.fromkeys(concrete[:2])) if concrete else None
-    except Exception as e:
+    except Exception:
         p["alert"]="公式情報の自動取得に失敗しました。公式サイトを確認してください。"
 
 jst=datetime.timezone(datetime.timedelta(hours=9))
