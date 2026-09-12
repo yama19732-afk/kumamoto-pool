@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026/09/12 08:15",
+  "updated_at": "2026/09/12 16:57",
   "pools": [
     {
       "id": "sougou",
@@ -56,7 +56,7 @@
       "courses": "メイン10 / サブ7",
       "official": "https://kc-sks.jp/aqua/",
       "calendar": "https://kc-sks.jp/aqua/calendar.html",
-      "alert": "公式情報の自動取得に失敗しました。公式サイトを確認してください。",
+      "alert": null,
       "main_pool": {
         "name": "メインプール",
         "length": "50m",
@@ -66,7 +66,7 @@
         "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
         "lane_notice_checked_at": "2026/08/09 20:31",
         "status_url": "https://kc-sks.jp/aqua/newsdata.html?id=id60e79a8642ea9",
-        "status_checked_at": "2026/09/12 08:15",
+        "status_checked_at": "2026/09/12 16:57",
         "status_text": "10:30頃更新の公式レーン貸し情報を確認してください。"
       },
       "sub_pool": {
@@ -78,7 +78,7 @@
         "lane_notice_url": "https://kc-sks.jp/aqua/news.html",
         "lane_notice_checked_at": "2026/08/09 20:31",
         "status_url": "https://kc-sks.jp/aqua/newsdata.html?id=id60e79a8642ea9",
-        "status_checked_at": "2026/09/12 08:15",
+        "status_checked_at": "2026/09/12 16:57",
         "status_text": "10:30頃更新の公式レーン貸し情報を確認してください。"
       },
       "aqua_important_title": "令和8年熊本地震に伴う臨時休館施設の一部利用再開について",
